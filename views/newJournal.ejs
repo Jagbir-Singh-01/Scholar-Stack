@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>scholar stack</title>
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Add New Journal</h1>
+
+          <!-- <a href="/journals" class="btn btn-secondary">See Journals</a> -->
+        </div>
+      </div>
+    </div>
+    <form method="POST" action="/journals/new"  class="form-control m-10 justify-center">
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Journal Name</span>
+        </label>
+        <input type="text" placeholder="name" name="name" class="input input-bordered" required />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Journal URL</span>
+        </label>
+        <input type="url" placeholder="url" name="url" class="input input-bordered" required />
+      </div>
+      <button type="submit" class="btn btn-success mt-5">submit</button>
+    </form>
+</body>
+</html>

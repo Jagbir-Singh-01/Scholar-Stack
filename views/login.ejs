@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>scholar stack</title>
+</head>
+<body>
+  
+
+    <%- include('partials/navbar') %>
+    
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Log In</h1>
+
+          <p class="py-6">Please provide your credentials below</p>
+          <a href="/register" class="btn btn-secondary">Register User</a>
+        </div>
+      </div>
+    </div>
+    <form method="POST" action="/login" class="form-control m-10 justify-center">
+
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Username</span>
+        </label>
+        <input type="text" placeholder="username" name="username" class="input input-bordered" required />
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Password</span>
+        </label>
+        <input type="password" placeholder="password" name="password" class="input input-bordered" required />
+      </div>
+      <button type="submit" class="btn btn-success mt-5">Submit</button>
+    </form>
+</body>
+</html>
