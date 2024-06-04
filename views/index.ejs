@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>scholar stack</title>
+</head>
+<body>
+
+    <%- include('partials/navbar') %>
+
+      <div class="grid grid-cols-3 gap-4">
+
+        <% articles.forEach((article) => { %>
+
+          <div class="card m-2 p-2 bg-base-100 shadow-xl border-2 border-rose-200">
+            <figure><img src="<%= article.coverImage%>" alt="Publication" /></figure>
+            <br>
+            <div class="flex justify-center">
+              <%if(article.openAccess) {%>
+                <div class="badge badge-secondary"><a href="/articles/openAccess">OPEN-ACCESS</a></div>
+              <%}%>
+              <div class="badge badge-primary"><a href="/articles?journal=<%=article.journalID%>">Journal <%=article.journalID%></a></div>
+            </div>
+
+
+            <div class="card-body">
+              <h2 class="card-title"><%= article.title%></h2>
+              <%article.authors.forEach((author) => {%>
+                <div class="badge badge-primary"><a href="/articles/author/name"><%=author%></a></div>
+              <%})%>
+
+              <p><%= article.description%></p>
+              <div class="card-actions justify-end">
+                <a href="/articles/<%=article.articleID%>" target="_blank" class="btn btn-primary w-full">Article <%=article.articleID%></a>
+                <a href="<%=article.doi%>" target="_blank" class="btn btn-secondary w-full">Take me there!</a>
+                <div class="rating">
+                  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                </div>
+                <%if (chat) { %>
+
+                <div id="chat" role="alert" class="alert alert-warning">
+                    <p><%= chat.message.content%></p>
+
+                </div>
+                <%}%>
+
+                <form method="POST" action="/chat"  class="w-full">
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Ask ChatGPT</span>
+                    </label>
+                    <input type="text" placeholder="Enter a question" name="chat" class="input input-bordered" required />
+                  </div>
+                  <button type="submit" class="w-full mt-5 btn btn-success">submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <%})%>
+
+      </div>
+    
+</body>
+</html>
